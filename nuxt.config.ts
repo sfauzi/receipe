@@ -9,6 +9,10 @@ export default defineNuxtConfig({
     '@nuxt/image'
   ],
 
+  image: {
+    domains: ['https://cdm.dummyjson.com']
+  },
+
   googleFonts: {
     families: {
       Montserrat: true
