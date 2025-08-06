@@ -30,7 +30,7 @@ const { data, error } = await useFetch<RecipeResponse>('https://dummyjson.com/re
         <section class="py-20 container">
             <h2 class="text-3xl lg:text-5xl mb-2">Discover, Create, Share</h2>
             <p class="text-lg lg:text-xl mb-8">Check out our most popular recipes!</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
+            <div v-if="!error" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
                 <div v-for="recipe in data?.recipes" class="flex flex-col shadow rounded-md">
                     <NuxtImg :src="recipe.image" sizes="xs:100vw sm:50vw lg:400px" densities="x1" format="webp" alt=""
                         class="rounded-t-md" />
@@ -58,6 +58,7 @@ const { data, error } = await useFetch<RecipeResponse>('https://dummyjson.com/re
                     </div>
                 </div>
             </div>
+            <p v-else class="text-lg lg:text-xl">Something went wrong. Please try again later.</p>
         </section>
     </main>
 </template>
